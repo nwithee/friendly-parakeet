@@ -7,9 +7,19 @@ var passwordCriteria = function (){
   while (criteria === "" || criteria === null) {
     criteria = window.prompt ("To set your password length, please enter 1.  To set your password character types, please enter 2");
   }
-  console.log ("You have selected option " + criteria);
  
   passwordGenerate(criteria);
+
+  if(criteria = 1){
+    criteria = criteria + 1;
+    alert ("You must now select your password characters");
+    passwordGenerate(criteria);
+  }
+  else {
+    criteria = criteria - 1;
+    alert ("You must now select your password length");
+    passwordGenerate(criteria);
+  }
 };
 
 //Function to generate password
@@ -37,16 +47,15 @@ var passwordLength = function (){
 //password character code
 var passwordCharacter = function (){
   var characters ="";
-  
-  var number ="0123456789";
+
   var special ="!@#$%^&*()";
 
   characters= passwordUpper();
-  console.log(characters);
   characters = passwordLower(characters);
-  console.log(characters);
   characters = passwordNumber(characters);
-  console.log(characters);
+  characters = passwordSpecial(characters);
+
+  alert("You password is going to contain a random selection of the following characers:  " + characters);
 };
 
  //upper character code    
@@ -90,7 +99,19 @@ var passwordNumber =function(passwordCharacter){
       }     
     };
 
-  
+//special character code    
+var passwordSpecial =function(passwordCharacter){
+  var special ="!@#$%^&*()";
+  var specialPrompt = prompt("Do you want to use special characters - Y or N?");
+      if (specialPrompt === "Y" || specialPrompt === "y"){       
+        special = special + passwordCharacter;
+        return special;
+      }
+      else{
+        special = ""
+        return special;
+      }     
+    };
 
 
 
