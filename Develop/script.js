@@ -8,20 +8,9 @@ var passwordCriteria = function (){
     criteria = window.prompt ("To set your password length, please enter 1.  To set your password character types, please enter 2");
   }
  
-  passwordGenerate(criteria);
+  var password = passwordGenerate(criteria);
   
-
-//fix this code
-  if(criteria === 1 ){
-    criteria = criteria + 1;
-    alert ("You must now select your password characters");
-    passwordGenerate(criteria);
-  }
-  else {
-    criteria = criteria -1;
-    alert ("You must now select your password length");
-    passwordGenerate(criteria);
-  }
+  alert("Your password is " + password);
 
 };
 
@@ -29,11 +18,25 @@ var passwordCriteria = function (){
 var passwordGenerate = function (passwordCriteria) {
   if (passwordCriteria == 1){
     var length = passwordLength();
-    console.log(length);
+    alert ("You must now select your password characters");
+    var characters = passwordCharacter();
+
+    returnValue = ""
+    for (var i = 0, n = characters.length; i < length; ++i){
+    returnValue += characters.charAt(Math.floor(Math.random() * n));
+    }
+    return returnValue;
   }
   else {
     var characters = passwordCharacter();
-    console.log(characters);
+    alert ("You must now select your password length");
+    var length = passwordLength();
+
+    returnValue = ""
+    for (var i = 0, n = characters.length; i < length; ++i){
+    returnValue += characters.charAt(Math.floor(Math.random() * n));
+    }
+    return returnValue;
   }
 
 };
@@ -61,17 +64,6 @@ var passwordCharacter = function (){
   alert("You password is going to contain a random selection of the following characers:  " + characters);
 
   return characters;
-
-  //random test code
-
-  var length = 10;
-  returnValue = "";
-  for (var i = 0, n = characters.length; i < length; ++i){
-    returnValue += characters.charAt(Math.floor(Math.random() * n));
-  }
-
-  console.log(returnValue);
-
 
 };
 
