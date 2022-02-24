@@ -9,26 +9,31 @@ var passwordCriteria = function (){
   }
  
   passwordGenerate(criteria);
+  
 
-  if(criteria = 1){
+//fix this code
+  if(criteria === 1 ){
     criteria = criteria + 1;
     alert ("You must now select your password characters");
     passwordGenerate(criteria);
   }
   else {
-    criteria = criteria - 1;
+    criteria = criteria -1;
     alert ("You must now select your password length");
     passwordGenerate(criteria);
   }
+
 };
 
 //Function to generate password
 var passwordGenerate = function (passwordCriteria) {
   if (passwordCriteria == 1){
-    passwordLength();
+    var length = passwordLength();
+    console.log(length);
   }
   else {
-    passwordCharacter();
+    var characters = passwordCharacter();
+    console.log(characters);
   }
 
 };
@@ -48,14 +53,26 @@ var passwordLength = function (){
 var passwordCharacter = function (){
   var characters ="";
 
-  var special ="!@#$%^&*()";
-
-  characters= passwordUpper();
+  characters = passwordUpper();
   characters = passwordLower(characters);
   characters = passwordNumber(characters);
   characters = passwordSpecial(characters);
 
   alert("You password is going to contain a random selection of the following characers:  " + characters);
+
+  return characters;
+
+  //random test code
+
+  var length = 10;
+  returnValue = "";
+  for (var i = 0, n = characters.length; i < length; ++i){
+    returnValue += characters.charAt(Math.floor(Math.random() * n));
+  }
+
+  console.log(returnValue);
+
+
 };
 
  //upper character code    
@@ -114,13 +131,11 @@ var passwordSpecial =function(passwordCharacter){
     };
 
 
+//create password
 
+var passwordFinal = function(passwordGenerate){
 
-
-
-
-
-//generate password
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
