@@ -1,14 +1,5 @@
 //**Assignment code here
 
-var passwordGeneration = function(){
-  //Prompt the user to pick the criteria they want to assign to their password
-  switch (passwordCriteria) {
-    case 1:
-      passwordLength();
-  }
-}
-
-
 //Capture password criteria selection
 var passwordCriteria = function (){
   var criteria ="";
@@ -17,29 +8,101 @@ var passwordCriteria = function (){
     criteria = window.prompt ("To set your password length, please enter 1.  To set your password character types, please enter 2");
   }
   console.log ("You have selected option " + criteria);
-  return criteria;
-}
+ 
+  passwordGenerate(criteria);
+};
 
-//prompt generated when password button is clicked
+//Function to generate password
+var passwordGenerate = function (passwordCriteria) {
+  if (passwordCriteria == 1){
+    passwordLength();
+  }
+  else {
+    passwordCharacter();
+  }
 
+};
 
 //password length code
 var passwordLength = function (){
   var length = "";
   
-  if(passwordCriteria = 1) {
+  while(length <= 7 || length >= 129) {
     length = window.prompt("Choose a number between 8 and 128");
   }
   console.log ("Your password will have a length of " + length + " characters");
   return length;
-}
+};
 
 //password character code
+var passwordCharacter = function (){
+  var characters ="";
+  
+  var number ="0123456789";
+  var special ="!@#$%^&*()";
+
+  characters= passwordUpper();
+  console.log(characters);
+  characters = passwordLower(characters);
+  console.log(characters);
+  characters = passwordNumber(characters);
+  console.log(characters);
+};
+
+ //upper character code    
+  var passwordUpper =function(){
+    var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var upperPrompt = prompt("Do you want to use upper case letters - Y or N?");
+      if (upperPrompt === "Y" || upperPrompt === "y"){
+        return upper;
+      }
+      else{
+        upper = ""
+        return upper;
+      }     
+    };
+
+//lower character code    
+var passwordLower =function(passwordCharacter){
+  var lower ="abcdefghijklmnopqrstuvwxyz";
+  var lowerPrompt = prompt("Do you want to use lower case letters - Y or N?");
+      if (lowerPrompt === "Y" || lowerPrompt === "y"){       
+        lower = lower + passwordCharacter;
+        return lower;
+      }
+      else{
+        lower = ""
+        return lower;
+      }     
+    };
+
+//number character code    
+var passwordNumber =function(passwordCharacter){
+  var number ="0123456789";
+  var numberPrompt = prompt("Do you want to use numbers - Y or N?");
+      if (numberPrompt === "Y" || numberPrompt === "y"){       
+        number = number + passwordCharacter;
+        return number;
+      }
+      else{
+        number = ""
+        return number;
+      }     
+    };
+
+  
+
+
+
+
+
+
+
 
 //generate password
 
 // Get references to the #generate element
-//var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 
 // Write password to the #password input
@@ -55,4 +118,4 @@ var passwordLength = function (){
 //generateBtn.addEventListener("click", writePassword);
 
 
-passwordGeneration();
+generateBtn.addEventListener("click",passwordCriteria);
