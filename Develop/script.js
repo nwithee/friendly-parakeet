@@ -12,6 +12,8 @@ var passwordCriteria = function (){
   
   alert("Your password is " + password);
 
+  return password;
+
 };
 
 //Function to generate password
@@ -48,7 +50,7 @@ var passwordLength = function (){
   while(length <= 7 || length >= 129) {
     length = window.prompt("Choose a number between 8 and 128");
   }
-  console.log ("Your password will have a length of " + length + " characters");
+  
   return length;
 };
 
@@ -61,10 +63,14 @@ var passwordCharacter = function (){
   characters = passwordNumber(characters);
   characters = passwordSpecial(characters);
 
-  alert("You password is going to contain a random selection of the following characers:  " + characters);
-
-  return characters;
-
+  if (characters === "" || characters === null) {
+    alert("You must select at least one password criteria");
+    passwordCharacter();
+  }
+  else {
+    alert("You password is going to contain a random selection of the following characers:  " + characters);
+    return characters;
+  }
 };
 
  //upper character code    
@@ -74,10 +80,14 @@ var passwordCharacter = function (){
       if (upperPrompt === "Y" || upperPrompt === "y"){
         return upper;
       }
-      else{
+      else if (upperPrompt === "N" || upperPrompt === "n"){
         upper = ""
         return upper;
-      }     
+      }
+      else {
+        alert("You must answer Y or N");
+        getCharacters();
+      }  
     };
 
 //lower character code    
@@ -88,9 +98,13 @@ var passwordLower =function(passwordCharacter){
         lower = lower + passwordCharacter;
         return lower;
       }
-      else{
-        lower = ""
+      else if (lowerPrompt === "N" || lowerPrompt === "n"){
+        lower = passwordCharacter;
         return lower;
+      }
+      else {
+        alert("You must answer Y or N");
+        passwordLower(passwordCharacter);
       }     
     };
 
@@ -102,9 +116,13 @@ var passwordNumber =function(passwordCharacter){
         number = number + passwordCharacter;
         return number;
       }
-      else{
-        number = ""
+      else if (numberPrompt === "N" || numberPrompt === "n"){
+        number = passwordCharacter;
         return number;
+      }
+      else {
+        alert("You must answer Y or N");
+        passwordNumber(passwordCharacter);
       }     
     };
 
@@ -116,34 +134,29 @@ var passwordSpecial =function(passwordCharacter){
         special = special + passwordCharacter;
         return special;
       }
-      else{
-        special = ""
+      else if (specialPrompt === "N" || specialPrompt === "n"){
+        special = passwordCharacter;
         return special;
-      }     
+      }
+      else {
+        alert("You must answer Y or N");
+        passwordSpecial(passwordCharacter);
+      }          
     };
-
-
-//create password
-
-var passwordFinal = function(passwordGenerate){
-
-}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-
-// Write password to the #password input
-//function writePassword() {
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
-
-  //passwordText.value = password;
-
-//}
+generateBtn.addEventListener("click",passwordCriteria);
 
 // Add event listener to generate button
 //generateBtn.addEventListener("click", writePassword);
 
+// Write password to the #password input
+//function writePassword() {
+  //var password = passwordCriteria();
+  //var passwordText = document.querySelector("#password");
 
-generateBtn.addEventListener("click",passwordCriteria);
+  //passwordText.value = password;
+
+//};
