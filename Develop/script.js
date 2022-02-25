@@ -1,6 +1,6 @@
 //**Assignment code here
 
-//Capture password criteria selection
+//Capture password criteria selection and output final password to user
 var passwordCriteria = function (){
   var criteria ="";
 
@@ -43,7 +43,7 @@ var passwordGenerate = function (passwordCriteria) {
 
 };
 
-//password length code
+//generate password length code
 var passwordLength = function (){
   var length = "";
   
@@ -54,7 +54,7 @@ var passwordLength = function (){
   return length;
 };
 
-//password character code
+//generate password character code
 var passwordCharacter = function (){
   var characters ="";
 
@@ -73,7 +73,7 @@ var passwordCharacter = function (){
   }
 };
 
- //upper character code    
+ //generate upper character code    
   var passwordUpper =function(){
     var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var upperPrompt = prompt("Do you want to use upper case letters - Y or N?");
@@ -90,7 +90,7 @@ var passwordCharacter = function (){
       }  
     };
 
-//lower character code    
+//generate lower character code    
 var passwordLower =function(passwordCharacter){
   var lower ="abcdefghijklmnopqrstuvwxyz";
   var lowerPrompt = prompt("Do you want to use lower case letters - Y or N?");
@@ -108,7 +108,7 @@ var passwordLower =function(passwordCharacter){
       }     
     };
 
-//number character code    
+//generate number character code    
 var passwordNumber =function(passwordCharacter){
   var number ="0123456789";
   var numberPrompt = prompt("Do you want to use numbers - Y or N?");
@@ -126,7 +126,7 @@ var passwordNumber =function(passwordCharacter){
       }     
     };
 
-//special character code    
+//generate special character code    
 var passwordSpecial =function(passwordCharacter){
   var special ="!@#$%^&*()";
   var specialPrompt = prompt("Do you want to use special characters - Y or N?");
@@ -149,16 +149,12 @@ var generateBtn = document.querySelector("#generate");
 
 generateBtn.addEventListener("click",passwordCriteria);
 
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
-
 // Write password to the #password input
-function writePassword() {
-  var password = passwordCriteria();
-  var passwordText = document.querySelector("#password");
+//function writePassword() {
+  //var password = passwordCriteria();
+  //var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  //passwordText.value = password;
 
-  
 
-};
+//};
