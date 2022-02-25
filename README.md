@@ -12,7 +12,7 @@ A website that generates a random password
 https://nwithee.github.io/friendly-parakeet/
 
 ## Screenshot
-![This is an image](/develop/screenshot.png)
+![This is an image](/develop/screenshot.jpg)
 
 ## Contribution
 Made by [Nevin Withee]
