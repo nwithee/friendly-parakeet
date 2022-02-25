@@ -65,7 +65,7 @@ var passwordCharacter = function (){
 
   if (characters === "" || characters === null) {
     alert("You must select at least one password criteria");
-    passwordCharacter();
+    return passwordCharacter();
   }
   else {
     alert("You password is going to contain a random selection of the following characers:  " + characters);
@@ -86,7 +86,7 @@ var passwordCharacter = function (){
       }
       else {
         alert("You must answer Y or N");
-        getCharacters();
+        return passwordUpper(upper);
       }  
     };
 
@@ -104,7 +104,7 @@ var passwordLower =function(passwordCharacter){
       }
       else {
         alert("You must answer Y or N");
-        passwordLower(passwordCharacter);
+        return passwordLower(passwordCharacter);
       }     
     };
 
@@ -122,7 +122,7 @@ var passwordNumber =function(passwordCharacter){
       }
       else {
         alert("You must answer Y or N");
-        passwordNumber(passwordCharacter);
+        return passwordNumber(passwordCharacter);
       }     
     };
 
@@ -140,7 +140,7 @@ var passwordSpecial =function(passwordCharacter){
       }
       else {
         alert("You must answer Y or N");
-        passwordSpecial(passwordCharacter);
+        return passwordSpecial(passwordCharacter);
       }          
     };
 
@@ -153,10 +153,12 @@ generateBtn.addEventListener("click",passwordCriteria);
 //generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
-//function writePassword() {
-  //var password = passwordCriteria();
-  //var passwordText = document.querySelector("#password");
+function writePassword() {
+  var password = passwordCriteria();
+  var passwordText = document.querySelector("#password");
 
-  //passwordText.value = password;
+  passwordText.value = password;
 
-//};
+  
+
+};
