@@ -45,13 +45,15 @@ var passwordGenerate = function (passwordCriteria) {
 
 //generate password length code
 var passwordLength = function (){
-  var length = "";
+  var length = window.prompt("Choose a number between 8 and 128");
   
-  while(length <= 7 || length >= 129) {
-    length = window.prompt("Choose a number between 8 and 128");
+  if(length >= 8 && length <=128) {
+    return length;
   }
-  
-  return length;
+  else {
+    alert("Please input a valid choice");
+    return passwordLength();
+  }  
 };
 
 //generate password character code
